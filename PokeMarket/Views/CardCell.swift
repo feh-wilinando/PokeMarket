@@ -27,7 +27,7 @@ class CardCell: UITableViewCell {
     
     func inflate(with card:Card) {
         cardName.text = card.name
-        cardPrice.text = card.price.description
+        cardPrice.text = "U$ \(card.price)"
         cardImage.af_setImage(withURL: URL(string: card.imageURL)!)
     }
 

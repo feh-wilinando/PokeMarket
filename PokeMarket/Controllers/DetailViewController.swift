@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
     
     private func setupOutlets(){
         bind(that: card.asObservable().map{$0.name}, with: nameLabel.rx.text)
-        bind(that: card.asObservable().map{$0.price.description}, with: priceLabel.rx.text)
+        bind(that: card.asObservable().map{"U$ \($0.price)"}, with: priceLabel.rx.text)
         
         card.asObservable().map{$0.imageURL}.asObservable().subscribe(onNext: { (imageURL) in
             guard let url = URL(string: imageURL!) else {return}
