@@ -1,9 +1,10 @@
 
 import Foundation
+import RxSwift
 
 class ShoppingCart {
     
-    private var items = Array<Card>()
+    private var items: Variable<Array<Card>> = Variable([])
     
     static let shared = ShoppingCart()
     
@@ -11,31 +12,35 @@ class ShoppingCart {
     
     
     func total() -> Double {
-        return items.map{$0.price}.reduce(0,+)
+        return items.value.map{$0.price}.reduce(0,+)
     }
     
     func size() -> Int {
-        return items.count
+        return items.value.count
     }
     
-    func list() -> [Card] {
+    func list() -> Variable<[Card]> {
         return items
     }
     
     
     func find(by id:Int) -> Card {
-        return items[id]
+        return items.value[id]
     }
     
     func add(_ item:Card) {
-        items.append(item)
+        items.value.append(item)
     }
     
     func remove(by id:Int){
-        items.remove(at:id)
+        items.value.remove(at:id)
+    }
+    
+    func id(of card:Card) -> Int? {
+        return items.value.index { $0.name == card.name }
     }
     
     func clear() {
-        items = Array()
+        items.value = Array()
     }
 }

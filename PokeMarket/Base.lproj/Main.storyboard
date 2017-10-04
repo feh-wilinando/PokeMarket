@@ -70,10 +70,6 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Hh2-jH-VkJ" id="AjZ-DV-qGF"/>
-                            <outlet property="delegate" destination="Hh2-jH-VkJ" id="Q5Y-n0-jWz"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Cards" id="YlK-Y8-Hv7">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="cTf-Mb-FJc">
@@ -82,6 +78,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="FNJ-hA-Ses" id="Odv-PB-vGJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiD-8o-l7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

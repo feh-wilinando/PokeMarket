@@ -8,6 +8,8 @@
 
 import UIKit
 import AlamofireImage
+import RxSwift
+import RxCocoa
 
 
 class DetailViewController: UIViewController {
@@ -16,37 +18,42 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    var card:Card?
+    var card:Variable<Card> = Variable(Card())
+    let disposeBag = DisposeBag()
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let actualCard = card {
-            nameLabel.text = actualCard.name
-            priceLabel.text = "U$ \(actualCard.price)"
-            imageView.af_setImage(withURL: URL(string: actualCard.imageURL)!)
-        }
         
-        
+        setupOutlets()
         navigationItem.title = "Details"
         
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - Rx
+    
+    private func setupOutlets(){
+        bind(that: card.asObservable().map{$0.name}, with: nameLabel.rx.text)
+        bind(that: card.asObservable().map{$0.price.description}, with: priceLabel.rx.text)
+        
+        card.asObservable().map{$0.imageURL}.asObservable().subscribe(onNext: { (imageURL) in
+            guard let url = URL(string: imageURL!) else {return}
+            
+            self.imageView.af_setImage(withURL: url)
+            
+        }).disposed(by: disposeBag)
+        
+        
     }
-    */
 
+    private func bind<T>(that source: Observable<T>, with target: Binder<T>){
+        source.bind(to: target).disposed(by: disposeBag)
+    }
+    
 }

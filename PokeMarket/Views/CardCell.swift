@@ -24,5 +24,11 @@ class CardCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func inflate(with card:Card) {
+        cardName.text = card.name
+        cardPrice.text = card.price.description
+        cardImage.af_setImage(withURL: URL(string: card.imageURL)!)
+    }
 
 }

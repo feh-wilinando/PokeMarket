@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ShoppingCartViewController: UIViewController {
 
@@ -14,32 +16,19 @@ class ShoppingCartViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let shoppingCart = ShoppingCart.shared
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        
-        updateTotal()
+        setupTableView()
+        setupTotal()
         
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func reset(_ sender: Any) {
         
@@ -48,39 +37,39 @@ class ShoppingCartViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func updateTotal() {
-        totalLabel.text = "U$ \(shoppingCart.total())"
-    }
-
-}
-
-
-extension ShoppingCartViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    //MARK: - Rx
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingCart.size()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath)
+    fileprivate func setupTableView(){
         
-        let card = shoppingCart.find(by: indexPath.row)
         
-        cell.textLabel?.text = card.name
-        cell.detailTextLabel?.text = "U$ \(card.price)"
+        //MARK: - Setup Delete
+        tableView.rx.modelDeleted(Card.self).subscribe(onNext: { (card) in
+            guard let row = self.shoppingCart.id(of: card) else {return}
+            
+            self.shoppingCart.remove(by: row)
+            
+        }).disposed(by: disposeBag)
         
-        return cell
+        
+        //MARK: - Setup DataSource
+        shoppingCart
+            .list()
+            .asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: "cartCell", cellType: UITableViewCell.self)){
+                row, card, cell in
+                
+                cell.textLabel?.text = card.name
+                cell.detailTextLabel?.text = "U$ \(card.price)"
+                
+        }.disposed(by: disposeBag)
+        
     }
     
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            shoppingCart.remove(by: indexPath.row)
-            updateTotal()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+    fileprivate func setupTotal(){
+        shoppingCart.list().asObservable().subscribe(onNext: {cards in
+            self.totalLabel.text = "U$ \(self.shoppingCart.total())"
+        }).disposed(by: disposeBag)
     }
+    
+
 }

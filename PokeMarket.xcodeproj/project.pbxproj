@@ -11,6 +11,7 @@
 		581C42BB1F8440FB006067E4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C42BA1F8440FB006067E4 /* DetailViewController.swift */; };
 		581C42BD1F84427C006067E4 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C42BC1F84427C006067E4 /* ShoppingCart.swift */; };
 		585371A01F84443400888DCC /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5853719F1F84443400888DCC /* ShoppingCartViewController.swift */; };
+		588050D51F853F1700952037 /* CardServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588050D41F853F1700952037 /* CardServices.swift */; };
 		58F810421F84170A005ACE0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F810411F84170A005ACE0F /* AppDelegate.swift */; };
 		58F810471F84170A005ACE0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F810451F84170A005ACE0F /* Main.storyboard */; };
 		58F810491F84170A005ACE0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F810481F84170A005ACE0F /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		581C42BA1F8440FB006067E4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		581C42BC1F84427C006067E4 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		5853719F1F84443400888DCC /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
+		588050D41F853F1700952037 /* CardServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardServices.swift; sourceTree = "<group>"; };
 		58F8103E1F84170A005ACE0F /* PokeMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F810411F84170A005ACE0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58F810461F84170A005ACE0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		588050D31F853F0700952037 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				588050D41F853F1700952037 /* CardServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		58F810351F84170A005ACE0F = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +91,7 @@
 		58F810401F84170A005ACE0F /* PokeMarket */ = {
 			isa = PBXGroup;
 			children = (
-				58F8105F1F8420CC005ACE0F /* Repositories */,
+				588050D31F853F0700952037 /* Services */,
 				58F810571F8419BB005ACE0F /* Models */,
 				58F810561F84195C005ACE0F /* Controllers */,
 				58F810531F8417CB005ACE0F /* Views */,
@@ -120,13 +130,6 @@
 				581C42BC1F84427C006067E4 /* ShoppingCart.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		58F8105F1F8420CC005ACE0F /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
 			sourceTree = "<group>";
 		};
 		5A03E53E00D54379CF212591 /* Pods */ = {
@@ -268,6 +271,7 @@
 				581C42BB1F8440FB006067E4 /* DetailViewController.swift in Sources */,
 				58F810421F84170A005ACE0F /* AppDelegate.swift in Sources */,
 				58F810551F8417EA005ACE0F /* CardCell.swift in Sources */,
+				588050D51F853F1700952037 /* CardServices.swift in Sources */,
 				581C42BD1F84427C006067E4 /* ShoppingCart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

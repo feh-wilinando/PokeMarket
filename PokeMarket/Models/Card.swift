@@ -14,6 +14,8 @@ class Card:  Mappable {
     var price:Double = 19.9
     var imageURL: String!
     
+    init() {
+    }
     
     required init?(map: Map) {
     }
