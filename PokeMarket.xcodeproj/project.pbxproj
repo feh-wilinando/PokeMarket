@@ -10,6 +10,7 @@
 		4F3868D411F8A1B0D76BD948 /* Pods_PokeMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B982BFE1129CDD7B3F5975 /* Pods_PokeMarket.framework */; };
 		581C42BB1F8440FB006067E4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C42BA1F8440FB006067E4 /* DetailViewController.swift */; };
 		581C42BD1F84427C006067E4 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C42BC1F84427C006067E4 /* ShoppingCart.swift */; };
+		584F7E1E1F86C0E8004E2E5A /* CardServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F7E1D1F86C0E8004E2E5A /* CardServices.swift */; };
 		585371A01F84443400888DCC /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5853719F1F84443400888DCC /* ShoppingCartViewController.swift */; };
 		58F810421F84170A005ACE0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F810411F84170A005ACE0F /* AppDelegate.swift */; };
 		58F810471F84170A005ACE0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F810451F84170A005ACE0F /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		581C42BA1F8440FB006067E4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		581C42BC1F84427C006067E4 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
+		584F7E1D1F86C0E8004E2E5A /* CardServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardServices.swift; sourceTree = "<group>"; };
 		5853719F1F84443400888DCC /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		58F8103E1F84170A005ACE0F /* PokeMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F810411F84170A005ACE0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		584F7E1C1F86C0CC004E2E5A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				584F7E1D1F86C0E8004E2E5A /* CardServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		58F810351F84170A005ACE0F = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +91,7 @@
 		58F810401F84170A005ACE0F /* PokeMarket */ = {
 			isa = PBXGroup;
 			children = (
-				58F8105F1F8420CC005ACE0F /* Repositories */,
+				584F7E1C1F86C0CC004E2E5A /* Services */,
 				58F810571F8419BB005ACE0F /* Models */,
 				58F810561F84195C005ACE0F /* Controllers */,
 				58F810531F8417CB005ACE0F /* Views */,
@@ -120,13 +130,6 @@
 				581C42BC1F84427C006067E4 /* ShoppingCart.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		58F8105F1F8420CC005ACE0F /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
 			sourceTree = "<group>";
 		};
 		5A03E53E00D54379CF212591 /* Pods */ = {
@@ -268,6 +271,7 @@
 				581C42BB1F8440FB006067E4 /* DetailViewController.swift in Sources */,
 				58F810421F84170A005ACE0F /* AppDelegate.swift in Sources */,
 				58F810551F8417EA005ACE0F /* CardCell.swift in Sources */,
+				584F7E1E1F86C0E8004E2E5A /* CardServices.swift in Sources */,
 				581C42BD1F84427C006067E4 /* ShoppingCart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

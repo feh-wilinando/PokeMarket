@@ -25,4 +25,10 @@ class CardCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    func inflate(with card:Card) {
+        cardName.text = card.name
+        cardPrice.text = "U$ \(card.price)"
+        cardImage.af_setImage(withURL: URL(string: card.imageURL)!)
+    }
 }

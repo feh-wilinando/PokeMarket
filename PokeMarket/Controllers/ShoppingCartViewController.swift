@@ -20,27 +20,9 @@ class ShoppingCartViewController: UIViewController {
         
         tableView.dataSource = self
         
-        updateTotal()
-        
-        // Do any additional setup after loading the view.
+        updateTotal()            
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     @IBAction func reset(_ sender: Any) {
         
         shoppingCart.clear()
@@ -48,7 +30,7 @@ class ShoppingCartViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func updateTotal() {
+    fileprivate func updateTotal() {
         totalLabel.text = "U$ \(shoppingCart.total())"
     }
 
