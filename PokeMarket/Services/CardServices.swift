@@ -16,7 +16,7 @@ class CardServices {
     
     fileprivate init(){}
     
-    func fechCards(onCompletion completion: @escaping ([Card]) -> Void ) {
+    func fetchCards(onCompletion completion: @escaping ([Card]) -> Void ) {
         
         Alamofire.request("https://api.pokemontcg.io/v1/cards")
             .responseObject(completionHandler: { (response: DataResponse<Cards>) in

@@ -37,7 +37,7 @@ class CardsTableViewController: UIViewController {
         
         tableView.addGestureRecognizer(longPress)
         
-        cardServices.fechCards { (cards) in
+        cardServices.fetchCards { (cards) in
             self.pokeCards.value = cards
         }
         
